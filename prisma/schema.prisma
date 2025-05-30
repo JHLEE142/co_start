@@ -1,0 +1,45 @@
+// prisma/schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String   @id @default(cuid())
+  email         String   @unique
+  password      String
+  nickname      String
+  role          String   @default("user")
+  selectedModel String   @default("gpt-4")
+  planId        String
+  plan          Plan     @relation(fields: [planId], references: [id])
+  chats         Chat[]
+  createdAt     DateTime @default(now())
+}
+
+model Plan {
+  id     String   @id @default(cuid())
+  name   String
+  price  Float
+  coins  Int
+  users  User[]
+}
+
+model Chat {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  message   String
+  response  String
+  createdAt DateTime @default(now())
+}
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "./node_modules/@prisma/client"
+}
