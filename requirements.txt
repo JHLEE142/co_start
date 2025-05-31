@@ -10,3 +10,4 @@ faiss-cpu
 httpx
 beautifulsoup4
 sqlalchemy
+passlib
