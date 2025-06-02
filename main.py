@@ -304,13 +304,6 @@ def delete_user(user_id: int, db: Session = Depends(get_db)):
     crud.delete_user(db, user_id)
     return {"message": "User deleted successfully"}
 
-# ✅ PayPal API 설정 (Sandbox)
-paypalrestsdk.configure({
-    "mode": "sandbox",
-    "client_id": "ATmCIBJ3nmvsDkwo3afFULqUe0EON_xbmNiDD3wMntN8ZOjouKbSw9QmK9yFiCgpfncwetmeHbYkyL2Z",
-    "client_secret": "EDJa0ne9Va8PCGL1hZXuK_A4NOhDI9rB6-z3PBlu8BY7Wz3pmqGGe60V8MLeRFUM89-0tM4BqoFHwhe3"
-})
-
 # ✅ PayPal 결제 요청 모델
 class PayPalPaymentRequest(schemas.BaseModel):
     email: str

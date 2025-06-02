@@ -1,14 +1,18 @@
+import os
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker, Session
+from sqlalchemy.orm import sessionmaker
 
-DATABASE_URL = "postgresql://x_project_user:your_password@localhost/x_project_db"
+# 환경변수에서 DATABASE_URL 불러오기 (.env 또는 Render 환경변수 설정 필요)
+DATABASE_URL = os.getenv("DATABASE_URL")
+
+if not DATABASE_URL:
+    raise ValueError("❌ DATABASE_URL 환경변수가 설정되어 있지 않습니다.")
 
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
 
-# ✅ 데이터베이스 세션을 가져오는 종속성 함수
 def get_db():
     db = SessionLocal()
     try:
