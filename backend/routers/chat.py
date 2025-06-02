@@ -17,6 +17,9 @@ class ChatSavePayload(BaseModel):
 
 @router.post("/chat/save")
 def save_chat(payload: ChatSavePayload):
+    if not payload.prompt or not payload.response:
+        return {"error": "Missing prompt or response"}, 400
+
     estimated_token_usage = len(payload.response.split())
 
     chat = {
@@ -24,7 +27,7 @@ def save_chat(payload: ChatSavePayload):
         "user_id": TEST_USER_ID,
         "prompt": payload.prompt,
         "response": payload.response,
-        "title": payload.title,
+        "title": payload.title or "Untitled",
         "token_usage": estimated_token_usage,
         "created_at": datetime.utcnow().isoformat()
     }
@@ -33,10 +36,11 @@ def save_chat(payload: ChatSavePayload):
 
     return {
         "message": "Chat saved (mocked)",
-        "tokens_used": estimated_token_usage
+        "tokens_used": estimated_token_usage,
+        "chat_id": chat["id"]
     }
 
-@router.get("/user")
+@router.get("/chat/user")  # 경로 명확화
 def get_user_chats():
     return [
         {
