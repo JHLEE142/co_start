@@ -39,7 +39,10 @@
     "dev": "next dev"
   },
   "eslintConfig": {
-    "extends": "next"
+    "extends": "next",
+    "rules": {
+      "react/no-children-prop": "off"
+    }
   },
   "browserslist": {
     "production": [
