@@ -16,15 +16,11 @@ export default function TemplatePreview({ content }: TemplatePreviewProps) {
   return (
     <div className="flex-1 border rounded p-4 bg-white text-gray-900 shadow">
       <h2 className="text-lg font-semibold mb-2">📄 Template Result</h2>
-      <ReactMarkdown
-        children={content}
-        remarkPlugins={[remarkGfm]}
-        className="prose prose-neutral prose-sm dark:prose-invert max-w-none"/>
-        <ReactMarkdown
-          children={content}
-          remarkPlugins={[remarkGfm]}
-          className="prose prose-neutral prose-sm dark:prose-invert max-w-none"
-        />
+      <div className="prose prose-neutral prose-sm dark:prose-invert max-w-none">
+        <ReactMarkdown remarkPlugins={[remarkGfm]}>
+          {content}
+        </ReactMarkdown>
+      </div>
     </div>
   );
 }

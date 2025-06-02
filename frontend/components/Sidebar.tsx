@@ -28,7 +28,7 @@ export default function Sidebar({ children }: SidebarProps) {
   const router = useRouter();
 
   const { logout } = useAuthStore();
-  const { user, setUser, clearUser } = useUserStore(); // ✅ user 객체 구조화
+  const { user, setUser } = useUserStore(); // ✅ user 객체 구조화
   const id = user?.id;
   const name = user?.name;
   const email = user?.email;
@@ -74,7 +74,6 @@ export default function Sidebar({ children }: SidebarProps) {
 
   const handleLogout = () => {
     logout();
-    clearUser();
     router.push("/login");
   };
 
