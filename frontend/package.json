@@ -1,0 +1,68 @@
+{
+  "name": "frontend",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@headlessui/react": "^2.2.2",
+    "@heroicons/react": "^2.2.0",
+    "@material-tailwind/react": "latest",
+    "@paypal/react-paypal-js": "^8.8.3",
+    "@prisma/client": "^6.7.0",
+    "@tailwindcss/typography": "^0.5.16",
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.2.0",
+    "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.8.1",
+    "bcryptjs": "^3.0.2",
+    "jsonwebtoken": "^9.0.2",
+    "lucide-react": "^0.503.0",
+    "marked": "^15.0.12",
+    "next": "^15.3.1",
+    "openai": "^4.95.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-markdown": "^10.1.0",
+    "react-router-dom": "^7.3.0",
+    "rehype-highlight": "^7.0.2",
+    "remark-gfm": "^4.0.1",
+    "web-vitals": "^2.1.4",
+    "zustand": "^5.0.3"
+  },
+  "scripts": {
+    "start": "next start",
+    "build": "next build",
+    "tailwind": "npx tailwindcss -i ./src/index.css -o ./src/output.css --watch",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "tailwind:init": "tailwindcss init -p",
+    "dev": "next dev"
+  },
+  "eslintConfig": {
+    "extends": "next"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.0.12",
+    "@types/react": "19.0.12",
+    "autoprefixer": "^10.4.21",
+    "daisyui": "^5.0.0",
+    "eslint": "^9.26.0",
+    "eslint-config-next": "^15.3.2",
+    "postcss": "^8.5.3",
+    "prisma": "^6.7.0",
+    "tailwindcss": "^3.3.3",
+    "typescript": "5.8.3"
+  }
+}
